@@ -13,6 +13,14 @@ class Question(models.Model):
         return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
 
 
+    def get_choices(self):
+        total = 0
+        choices = self.choice_set.all()
+        for c in choices:
+            total += c.votes
+        return [(c.choice_text, c.votes, c.votes / total)
+        for c in choices]
+
 class Choice(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     choice_text = models.CharField(max_length=200)
