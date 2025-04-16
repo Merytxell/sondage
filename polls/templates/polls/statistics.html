@@ -1,0 +1,16 @@
+<h1>Statistiques des sondages</h1>
+
+<p><strong>Nombre total de sondages :</strong> {{ total_sondages }}</p>
+<p><strong>Nombre total de choix possibles :</strong> {{ total_choix }}</p>
+<p><strong>Nombre total de votes :</strong> {{ total_votes }}</p>
+<p><strong>Moyenne des votes par sondage :</strong> {{ moyenne_votes }}</p>
+
+{% if question_populaire %}
+    <p><strong>Question la plus populaire :</strong> "{{ question_populaire.question_text }}" avec {{ total_votes_populaire }} votes.</p>
+{% endif %}
+
+{% if question_moins_populaire %}
+    <p><strong>Question la moins populaire :</strong> "{{ question_moins_populaire.question_text }}" avec {{ total_votes_moins_populaire }} votes.</p>
+{% endif %}
+
+<p><strong>Dernière question enregistrée :</strong> "{{ derniere_question.question_text }}"</p>
